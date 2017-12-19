@@ -7,6 +7,9 @@ package fechainterface;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.math.BigInteger;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
@@ -44,12 +47,18 @@ public class Fecha extends javax.swing.JFrame {
         jFCodigoPostal = new javax.swing.JFormattedTextField();
         jLabel13 = new javax.swing.JLabel();
         jLMostrarProvincia = new javax.swing.JLabel();
-        jLProvincia = new javax.swing.JLabel();
         jDNI1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jBComprobarIBAN = new javax.swing.JButton();
         jFIBAN = new javax.swing.JFormattedTextField();
         jLabel11 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jBComprobarAnnos = new javax.swing.JButton();
+        jFFechaAnos = new javax.swing.JFormattedTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jLMostrarEdad = new javax.swing.JLabel();
+        jLMostrarIBAN = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jBComprobarFecha = new javax.swing.JButton();
@@ -61,6 +70,8 @@ public class Fecha extends javax.swing.JFrame {
         jFDNI = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
         jBComprobarDNI = new javax.swing.JButton();
+        jLMostrarDNICorrecto = new javax.swing.JLabel();
+        jLMostrarDNICorrecto1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,9 +106,7 @@ public class Fecha extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(jLProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jLMostrarProvincia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jFCodigoPostal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -115,7 +124,6 @@ public class Fecha extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLProvincia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLMostrarProvincia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(12, 12, 12))
         );
@@ -123,6 +131,11 @@ public class Fecha extends javax.swing.JFrame {
         jLabel10.setText("N.C.B");
 
         jBComprobarIBAN.setText("Comprobar");
+        jBComprobarIBAN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBComprobarIBANActionPerformed(evt);
+            }
+        });
 
         try {
             jFIBAN.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("UU ## #### #### ## ##########")));
@@ -134,6 +147,66 @@ public class Fecha extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fechainterface/correcto.png"))); // NOI18N
         jLabel11.setEnabled(false);
+
+        jLabel14.setText("Nacimiento:");
+
+        jBComprobarAnnos.setText("Comprobar");
+        jBComprobarAnnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBComprobarAnnosActionPerformed(evt);
+            }
+        });
+
+        try {
+            jFFechaAnos.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFFechaAnos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jFFechaAnos.setText(" / /");
+        jFFechaAnos.setName(""); // NOI18N
+
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fechainterface/correcto.png"))); // NOI18N
+        jLabel15.setEnabled(false);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLMostrarEdad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel14)
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(jFFechaAnos, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(57, 57, 57)
+                .addComponent(jBComprobarAnnos, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBComprobarAnnos)
+                    .addComponent(jFFechaAnos, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(12, 12, 12))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLMostrarEdad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
+        );
 
         javax.swing.GroupLayout jDNI1Layout = new javax.swing.GroupLayout(jDNI1);
         jDNI1.setLayout(jDNI1Layout);
@@ -150,7 +223,12 @@ public class Fecha extends javax.swing.JFrame {
                         .addComponent(jBComprobarIBAN, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDNI1Layout.createSequentialGroup()
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLMostrarIBAN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(127, 127, 127))))
+            .addGroup(jDNI1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDNI1Layout.setVerticalGroup(
             jDNI1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,9 +238,13 @@ public class Fecha extends javax.swing.JFrame {
                     .addComponent(jBComprobarIBAN)
                     .addComponent(jFIBAN, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(12, 12, 12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDNI1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLMostrarIBAN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jLabel8.setText("Fecha :");
@@ -180,6 +262,8 @@ public class Fecha extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         jFFecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jFFecha.setText(" / /");
+        jFFecha.setName(""); // NOI18N
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fechainterface/correcto.png"))); // NOI18N
@@ -216,7 +300,7 @@ public class Fecha extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                         .addGap(12, 12, 12))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLMostrarFechaCorrecta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -259,12 +343,19 @@ public class Fecha extends javax.swing.JFrame {
                 .addGroup(jDNILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDNILayout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLMostrarDNICorrecto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(172, 172, 172))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDNILayout.createSequentialGroup()
                         .addComponent(jFDNI)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBComprobarDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(jDNILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDNILayout.createSequentialGroup()
+                    .addGap(125, 125, 125)
+                    .addComponent(jLMostrarDNICorrecto1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(168, 168, 168)))
         );
         jDNILayout.setVerticalGroup(
             jDNILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,9 +365,16 @@ public class Fecha extends javax.swing.JFrame {
                     .addComponent(jFDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(jBComprobarDNI))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDNILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLMostrarDNICorrecto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(12, 12, 12))
+            .addGroup(jDNILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDNILayout.createSequentialGroup()
+                    .addGap(63, 63, 63)
+                    .addComponent(jLMostrarDNICorrecto1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(2, 2, 2)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -288,16 +386,16 @@ public class Fecha extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jDNI, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jDNI1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jDNI, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jDNI1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,16 +408,15 @@ public class Fecha extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jDNI1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(106, 106, 106))
+                .addGap(16, 16, 16))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBComprobarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBComprobarFechaActionPerformed
-
         int annoMenor = 1967;
         int annoMaximo = 2067;
         String textoMostrar = "Formato no válido " + jFFecha.getText();
@@ -400,14 +497,19 @@ public class Fecha extends javax.swing.JFrame {
             char letra = letrasSegunResto.charAt(modulo);
 
             if (dniLetra.equals(Character.toString(letra))) {
-                jLabel7.setIcon(new ImageIcon(getClass().getResource("/fechainterface/correcto.png")));
+                jLabel7.setIcon(new ImageIcon(getClass().getResource("/fechainterface/correcto.png"))); // NOI18N
                 jLabel7.setEnabled(true);
+                jLMostrarDNICorrecto.setText("DNI Correcto");
+                jLMostrarDNICorrecto.setFont(negrita);
+                jLMostrarDNICorrecto.setForeground(Color.darkGray);    //Esto igual esta prohibido
                 System.out.println("Dni Correcto");
                 System.out.println("ok " + dniLetra + " y debiera dar " + letra);
             } else {
-                jLabel7.setIcon(new ImageIcon(getClass().getResource("/fechainterface/error.png")));
+                jLabel7.setIcon(new ImageIcon(getClass().getResource("/fechainterface/error.png"))); // NOI18N
                 jLabel7.setEnabled(true);
-                System.out.println("no " + dniLetra + " y debiera dar " + letra);
+                jLMostrarDNICorrecto.setText("Error en DNI");
+                jLMostrarDNICorrecto.setFont(negrita);
+                jLMostrarDNICorrecto.setForeground(Color.red);    //Esto igual esta prohibido
                 JOptionPane.showMessageDialog(null, "Dni no válido, no existe");
                 System.out.println("Fecha Incorrecta");
             }
@@ -451,19 +553,18 @@ public class Fecha extends javax.swing.JFrame {
                         + enteroMaximoCodigoTemporal + " >= " + enteroCodigoPostalUsuario);
 
                 if (enteroMinimoCodigoTemporal <= enteroCodigoPostalUsuario && enteroMaximoCodigoTemporal >= enteroCodigoPostalUsuario) {
-                    jLMostrarProvincia.setText(nombreProvincia[i]);
+                    jLMostrarProvincia.setText( "Provincia: " + nombreProvincia[i]);
                     jLMostrarProvincia.setFont(negrita);
                     jLMostrarProvincia.setForeground(Color.darkGray);    //Esto igual esta prohibido
-                    jLProvincia.setText("Provincia :");
+
                     jLabel13.setIcon(new ImageIcon(getClass().getResource("/fechainterface/correcto.png")));
                     jLabel13.setEnabled(true);
                     System.out.println("codigo correcto");
 
                 } else {
-                    jLMostrarProvincia.setText("No existe");
+                    jLMostrarProvincia.setText(" Error en C.P");
                     jLMostrarProvincia.setForeground(Color.red);    //Esto igual esta prohibido
-                         
-                    jLProvincia.setText("");
+                    jLMostrarProvincia.setFont(negrita);
                     jLabel13.setIcon(new ImageIcon(getClass().getResource("/fechainterface/error.png")));
                     jLabel13.setEnabled(true);
                     System.out.println("codigo no correcto");
@@ -474,9 +575,9 @@ public class Fecha extends javax.swing.JFrame {
 
         /*Sino encuentra provincia en el for, es que no existe el indice de provincia*/
         if (!provinciaEncontrada) {
-            jLMostrarProvincia.setText("No existe");
+            jLMostrarProvincia.setText("Provincia no encontrada");
             jLMostrarProvincia.setForeground(Color.red);    //Esto igual esta prohibido
-            jLProvincia.setText("");
+            jLMostrarProvincia.setFont(negrita);
             jLabel13.setIcon(new ImageIcon(getClass().getResource("/fechainterface/error.png")));
             jLabel13.setEnabled(true);
             System.out.println("codigo no correcto");
@@ -484,11 +585,242 @@ public class Fecha extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBComprobarCodigoPostalActionPerformed
 
+    private void jBComprobarAnnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBComprobarAnnosActionPerformed
+        int annoMenor = 1900;
+        int annoMaximo = 2017;
+        String textoMostrar = "Formato no válido " + jFFechaAnos.getText();
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+        if (JFormattedTextField.COMMIT == 0) {
+            String fechaPasada = jFFechaAnos.getText();
+            String[] partesFecha = fechaPasada.split("/");  //Rompo la cadena
+            String dia = partesFecha[0];
+            String mes = partesFecha[1];
+            String anno = partesFecha[2];
+
+            /*Descubrimos que dia es hoy*/
+            Date fecha = new Date();
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            String hoy = formato.format(fecha);
+
+            /*Compruebo la fecha de hoy*/
+            String[] fechaHoy = hoy.split("/");
+            String diaHoy = fechaHoy[0];
+            String mesHoy = fechaHoy[1];
+            String annoHoy = fechaHoy[2];
+
+            //Añado un 0 al mes si tiene 1 digito
+            if (mes.length() == 1) {
+                mes = "0" + mes;
+            }
+
+            //Compruebo si el dia es correcto
+            for (int i = 0; i < numeroMes.length; i++) {    //Recorro como máximo 12 veces
+                if (Integer.parseInt(anno) >= annoMenor && Integer.parseInt(anno) <= annoMaximo) {  //Compruebo que el correo es correcto
+                    if (Integer.parseInt(mes) == numeroMes[i]) {
+                        if (diasMes[i] >= Integer.parseInt(dia) && Integer.parseInt(dia) > 0) {
+                            /*Calculo los años, luego los meses y en funcion de lo entregado los dias*/
+                            int anosCalculados = Integer.parseInt(annoHoy) - Integer.parseInt(anno);
+                            int mesCumpe = Integer.parseInt(mesHoy) - Integer.parseInt(mes);
+                            if (mesCumpe < 0) {
+                                anosCalculados = anosCalculados - 1;
+                            } else if (mesCumpe == 0) {
+                                int diaCumple = Integer.parseInt(diaHoy) - Integer.parseInt(dia);
+                                if (diaCumple > 0) {
+                                    anosCalculados = anosCalculados - 1;
+                                }
+                            }
+
+                            jLabel15.setIcon(new ImageIcon(getClass().getResource("/fechainterface/correcto.png"))); // NOI18N
+                            jLabel15.setEnabled(true);
+                            jLMostrarEdad.setText("Tienes " + anosCalculados + " anños");
+                            jLMostrarEdad.setFont(negrita);
+                            jLMostrarEdad.setForeground(Color.darkGray);    //Esto igual esta prohibido
+
+                        } else {
+                            //Antes de decir que la fecha no es correcta, hay que comprobar bisiestos
+                            if (numeroMes[1] == Integer.parseInt(mes)) {
+                                //SI ((año divisible por 4) Y ((año no divisible por 100) O (año divisible por 400))) ENTONC
+                                if ((Integer.parseInt(anno) % 4 == 0) && (Integer.parseInt(anno) % 100 != 0) && (Integer.parseInt(dia) == 29)) {
+
+                                    /*Calculo los años, luego los meses y en funcion de lo entregado los dias*/
+                                    int anosCalculados = Integer.parseInt(annoHoy) - Integer.parseInt(anno);
+                                    int mesCumpe = Integer.parseInt(mesHoy) - Integer.parseInt(mes);
+                                    if (mesCumpe < 0) {
+                                        anosCalculados = anosCalculados - 1;
+                                    } else if (mesCumpe == 0) {
+                                        int diaCumple = Integer.parseInt(diaHoy) - Integer.parseInt(dia);
+                                        if (diaCumple > 0) {
+                                            anosCalculados = anosCalculados - 1;
+                                        }
+                                    }
+
+                                    jLabel15.setIcon(new ImageIcon(getClass().getResource("/fechainterface/correcto.png"))); // NOI18N
+                                    jLabel15.setEnabled(true);
+                                    jLMostrarEdad.setText("Tienes " + anosCalculados + " anños");
+                                    jLMostrarEdad.setFont(negrita);
+                                    jLMostrarEdad.setForeground(Color.darkGray);    //Esto igual esta prohibido
+
+                                } else {
+                                    jLabel15.setIcon(new ImageIcon(getClass().getResource("/fechainterface/error.png"))); // NOI18N
+                                    jLabel15.setEnabled(true);
+                                    jLMostrarEdad.setText("Error en fecha");
+                                    jLMostrarEdad.setFont(negrita);
+                                    jLMostrarEdad.setForeground(Color.red);    //Esto igual esta prohibido
+                                    JOptionPane.showMessageDialog(null, "Algo falla " + jFFechaAnos.getText());
+                                    System.out.println("Fecha Incorrecta");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_jBComprobarAnnosActionPerformed
+
+    static String ponCerosIzquierda(String str, int longitud) {
+        String ceros = "";
+        if (str.length() < longitud) {
+            for (int i = 0; i < (longitud - str.length()); i++) {
+                ceros = ceros + '0';
+            }
+            str = ceros + str;
+        }
+
+        return str;
+    }
+
+    static String damePesoIBAN(char letra) {
+        String peso = "";
+        letra = Character.toUpperCase(letra);
+        switch (letra) {
+            case 'A':
+                peso = "10";
+                break;
+            case 'B':
+                peso = "11";
+                break;
+            case 'C':
+                peso = "12";
+                break;
+            case 'D':
+                peso = "13";
+                break;
+            case 'E':
+                peso = "14";
+                break;
+            case 'F':
+                peso = "15";
+                break;
+            case 'G':
+                peso = "16";
+                break;
+            case 'H':
+                peso = "17";
+                break;
+            case 'I':
+                peso = "18";
+                break;
+            case 'J':
+                peso = "19";
+                break;
+            case 'K':
+                peso = "20";
+                break;
+            case 'L':
+                peso = "21";
+                break;
+            case 'M':
+                peso = "22";
+                break;
+            case 'N':
+                peso = "23";
+                break;
+            case 'O':
+                peso = "24";
+                break;
+            case 'P':
+                peso = "25";
+                break;
+            case 'Q':
+                peso = "26";
+                break;
+            case 'R':
+                peso = "27";
+                break;
+            case 'S':
+                peso = "28";
+                break;
+            case 'T':
+                peso = "29";
+                break;
+            case 'U':
+                peso = "30";
+                break;
+            case 'V':
+                peso = "31";
+                break;
+            case 'W':
+                peso = "32";
+                break;
+            case 'X':
+                peso = "33";
+                break;
+            case 'Y':
+                peso = "34";
+                break;
+            case 'Z':
+                peso = "35";
+                break;
+        }
+        return peso;
+    }
+    
+    private void jBComprobarIBANActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBComprobarIBANActionPerformed
+        String IBANUsuario = jFIBAN.getText();
+        String[] partesIban = IBANUsuario.split(" ");  //Rompo la cadena
+        String IbanNacionalidad = partesIban[0];
+        String IbanDigitoControl = partesIban[1];
+        String IbanEntidad = partesIban[2];
+        String IbanOficina = partesIban[3];
+        String IbanDC = partesIban[4];
+        String IbanNumeroCuenta = partesIban[5];
+
+        String numeroIBANReal = IbanEntidad + IbanOficina + IbanDC + IbanNumeroCuenta +
+                damePesoIBAN(IbanNacionalidad.charAt(0)) + damePesoIBAN(IbanNacionalidad.charAt(1))+ "00";
+        
+        /*Calculo el modulo de 97 y al resultado le resto 98*/
+       BigInteger numeroCuenta = new BigInteger(numeroIBANReal);
+       BigInteger noventaysiete = new BigInteger("97");
+       numeroCuenta = numeroCuenta.mod(noventaysiete);
+       int digitoControlTeorico = numeroCuenta.intValue();
+       digitoControlTeorico = 98 - digitoControlTeorico;
+       String digitoControlString = ponCerosIzquierda(Integer.toString(digitoControlTeorico), 2);
+       System.out.println(ponCerosIzquierda(Integer.toString(digitoControlTeorico), 2));
+       
+       if (digitoControlString.equals(IbanDigitoControl)) {
+       
+                    jLMostrarIBAN.setText( "IBAN CORRECTO");
+                    jLMostrarIBAN.setFont(negrita);
+                    jLMostrarIBAN.setForeground(Color.darkGray);    //Esto igual esta prohibido
+                    jLabel11.setIcon(new ImageIcon(getClass().getResource("/fechainterface/correcto.png")));
+                    jLabel11.setEnabled(true);
+
+
+                } else {
+                    jLMostrarIBAN.setText(" Error, digito esperado " + digitoControlTeorico);
+                    jLMostrarIBAN.setForeground(Color.red);    //Esto igual esta prohibido
+                    jLMostrarIBAN.setFont(negrita);    
+                    jLabel11.setIcon(new ImageIcon(getClass().getResource("/fechainterface/error.png")));
+                    jLabel11.setEnabled(true);
+
+                }
+
+    }//GEN-LAST:event_jBComprobarIBANActionPerformed
+
+/**
+ * @param args the command line arguments
+ */
+public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -521,6 +853,7 @@ public class Fecha extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBComprobarAnnos;
     private javax.swing.JButton jBComprobarCodigoPostal;
     private javax.swing.JButton jBComprobarDNI;
     private javax.swing.JButton jBComprobarFecha;
@@ -531,19 +864,26 @@ public class Fecha extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFCodigoPostal;
     private javax.swing.JFormattedTextField jFDNI;
     private javax.swing.JFormattedTextField jFFecha;
+    private javax.swing.JFormattedTextField jFFechaAnos;
     private javax.swing.JFormattedTextField jFIBAN;
+    private javax.swing.JLabel jLMostrarDNICorrecto;
+    private javax.swing.JLabel jLMostrarDNICorrecto1;
+    private javax.swing.JLabel jLMostrarEdad;
     private javax.swing.JLabel jLMostrarFechaCorrecta;
+    private javax.swing.JLabel jLMostrarIBAN;
     private javax.swing.JLabel jLMostrarProvincia;
-    private javax.swing.JLabel jLProvincia;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
 }
