@@ -5,6 +5,8 @@
  */
 package fechainterface;
 
+import java.awt.Color;
+import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
@@ -14,8 +16,11 @@ import javax.swing.JOptionPane;
  * @author oski_
  */
 public class Fecha extends javax.swing.JFrame {
+
     static int[] diasMes = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     static int[] numeroMes = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+    Font negrita = new Font("Arial", Font.BOLD, 14);
+
     /**
      * Creates new form Fecha
      */
@@ -38,6 +43,8 @@ public class Fecha extends javax.swing.JFrame {
         jBComprobarCodigoPostal = new javax.swing.JButton();
         jFCodigoPostal = new javax.swing.JFormattedTextField();
         jLabel13 = new javax.swing.JLabel();
+        jLMostrarProvincia = new javax.swing.JLabel();
+        jLProvincia = new javax.swing.JLabel();
         jDNI1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jBComprobarIBAN = new javax.swing.JButton();
@@ -48,6 +55,7 @@ public class Fecha extends javax.swing.JFrame {
         jBComprobarFecha = new javax.swing.JButton();
         jFFecha = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
+        jLMostrarFechaCorrecta = new javax.swing.JLabel();
         jDNI = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jFDNI = new javax.swing.JFormattedTextField();
@@ -59,6 +67,11 @@ public class Fecha extends javax.swing.JFrame {
         jLabel12.setText("C.P :");
 
         jBComprobarCodigoPostal.setText("Comprobar");
+        jBComprobarCodigoPostal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBComprobarCodigoPostalActionPerformed(evt);
+            }
+        });
 
         try {
             jFCodigoPostal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####")));
@@ -82,7 +95,10 @@ public class Fecha extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(37, 37, 37)
+                        .addComponent(jLProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLMostrarProvincia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jFCodigoPostal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBComprobarCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -97,7 +113,10 @@ public class Fecha extends javax.swing.JFrame {
                     .addComponent(jFCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLProvincia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLMostrarProvincia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(12, 12, 12))
         );
 
@@ -170,18 +189,21 @@ public class Fecha extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel8)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(jFFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLMostrarFechaCorrecta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(jFFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(65, 65, 65)
                 .addComponent(jBComprobarFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,8 +214,13 @@ public class Fecha extends javax.swing.JFrame {
                     .addComponent(jFFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(12, 12, 12))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(12, 12, 12))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLMostrarFechaCorrecta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         jLabel6.setText("DNI :");
@@ -295,11 +322,11 @@ public class Fecha extends javax.swing.JFrame {
 
         int annoMenor = 1967;
         int annoMaximo = 2067;
-
+        String textoMostrar = "Formato no válido " + jFFecha.getText();
 
         if (JFormattedTextField.COMMIT == 0) {
             String fechaPasada = jFFecha.getText();
-            String[] partesFecha = fechaPasada.split("/");
+            String[] partesFecha = fechaPasada.split("/");  //Rompo la cadena
             String dia = partesFecha[0];
             String mes = partesFecha[1];
             String anno = partesFecha[2];
@@ -310,24 +337,34 @@ public class Fecha extends javax.swing.JFrame {
             }
 
             //Compruebo si el dia es correcto
-            for (int i = 0; i < numeroMes.length; i++) {
-                if (Integer.parseInt(anno) <= annoMenor && Integer.parseInt(anno) >= annoMaximo) {
+            for (int i = 0; i < numeroMes.length; i++) {    //Recorro como máximo 12 veces
+                if (Integer.parseInt(anno) >= annoMenor && Integer.parseInt(anno) <= annoMaximo) {  //Compruebo que el correo es correcto
                     if (Integer.parseInt(mes) == numeroMes[i]) {
                         if (diasMes[i] >= Integer.parseInt(dia) && Integer.parseInt(dia) > 0) {
                             jLabel9.setIcon(new ImageIcon(getClass().getResource("/fechainterface/correcto.png"))); // NOI18N
                             jLabel9.setEnabled(true);
+                            jLMostrarFechaCorrecta.setText("Fecha correcta");
+                            jLMostrarFechaCorrecta.setFont(negrita);
+                            jLMostrarFechaCorrecta.setForeground(Color.darkGray);    //Esto igual esta prohibido
 
                             System.out.println("Fecha Correcta");
                         } else {
-                            if (numeroMes[1] == Integer.parseInt(mes)) {     //Antes de decir que la fecha no es correcta, hay que comprobar bisiestos
+                            //Antes de decir que la fecha no es correcta, hay que comprobar bisiestos
+                            if (numeroMes[1] == Integer.parseInt(mes)) {
                                 //SI ((año divisible por 4) Y ((año no divisible por 100) O (año divisible por 400))) ENTONC
-                                if ((Integer.parseInt(anno) % 4 == 0) && (Integer.parseInt(anno) % 100 != 0)) {
+                                if ((Integer.parseInt(anno) % 4 == 0) && (Integer.parseInt(anno) % 100 != 0) && (Integer.parseInt(dia) == 29)) {
                                     jLabel9.setIcon(new ImageIcon(getClass().getResource("/fechainterface/correcto.png"))); // NOI18N
                                     jLabel9.setEnabled(true);
-                                    System.out.println("Fecha Correcta");
+                                    jLMostrarFechaCorrecta.setText("Fecha correcta");
+                                    jLMostrarFechaCorrecta.setFont(negrita);
+                                    jLMostrarFechaCorrecta.setForeground(Color.darkGray);    //Esto igual esta prohibido
+
                                 } else {
                                     jLabel9.setIcon(new ImageIcon(getClass().getResource("/fechainterface/error.png"))); // NOI18N
                                     jLabel9.setEnabled(true);
+                                    jLMostrarFechaCorrecta.setText("Error en fecha");
+                                    jLMostrarFechaCorrecta.setFont(negrita);
+                                    jLMostrarFechaCorrecta.setForeground(Color.red);    //Esto igual esta prohibido
                                     JOptionPane.showMessageDialog(null, "Fecha no válida, no existe " + jFFecha.getText());
                                     System.out.println("Fecha Incorrecta");
                                 }
@@ -336,15 +373,117 @@ public class Fecha extends javax.swing.JFrame {
                     }
                 }
             }
+        }
     }//GEN-LAST:event_jBComprobarFechaActionPerformed
 
     private void jBComprobarDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBComprobarDNIActionPerformed
-        // TODO add your handling code here:
+        /*"La letra del DNI se obtiene dividiendo el número completo de nuestro DNI entre 23
+           y al resto de dicha división que deberá estar comprendido entre 0 y 22 se le asigna la
+           letra según la equivalencia de la siguiente tabla:
+        RESTO	0	1	2	3	4	5	6	7	8	9	10	11
+        LETRA	T	R	W	A	G	M	Y	F	P	D	X	B
+ 
+
+        RESTO	12	13	14	15	16	17	18	19	20	21	22
+        LETRA	N	J	Z	S	Q	V	H	L	C	K	E
+         */
+
+        String letrasSegunResto = "TRWAGMYFPDXBNJZSQVHLCKE";
+
+        if (JFormattedTextField.COMMIT == 0) {
+            String dniUsuarioNumeros = jFDNI.getText();
+            String[] partesDni = dniUsuarioNumeros.split("-");  //Rompo la cadena
+            String dniNumero = partesDni[0];
+            String dniLetra = partesDni[1];
+
+            int modulo = Integer.parseInt(dniNumero) % 23;   //Consigo el numero y hago el modulo de 23
+            char letra = letrasSegunResto.charAt(modulo);
+
+            if (dniLetra.equals(Character.toString(letra))) {
+                jLabel7.setIcon(new ImageIcon(getClass().getResource("/fechainterface/correcto.png")));
+                jLabel7.setEnabled(true);
+                System.out.println("Dni Correcto");
+                System.out.println("ok " + dniLetra + " y debiera dar " + letra);
+            } else {
+                jLabel7.setIcon(new ImageIcon(getClass().getResource("/fechainterface/error.png")));
+                jLabel7.setEnabled(true);
+                System.out.println("no " + dniLetra + " y debiera dar " + letra);
+                JOptionPane.showMessageDialog(null, "Dni no válido, no existe");
+                System.out.println("Fecha Incorrecta");
+            }
+        }
     }//GEN-LAST:event_jBComprobarDNIActionPerformed
 
     private void jFDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFDNIActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFDNIActionPerformed
+
+    private void jBComprobarCodigoPostalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBComprobarCodigoPostalActionPerformed
+        String[] nombreProvincia = {"Alava", "Albacete", "Alicante", "Almería", "Ávila", "Badajoz", "Baleares", "Barcelona", "Burgos", "Cáceres",
+            "Cádiz", "Castellón", "Ciudad Real", "Córdoba", "La Coruña", "Cuenca", "Gerona", "Granada", "Guadalajara",
+            "Guipúzcoa", "Huelva", "Huesca", "Jaén", "León", "Lérida", "Logroño", "Lugo", "Madrid", "Málaga", "Murcia", "Navarra",
+            "Orense", "Astturias(Oviedo)", "Palencia", "Las Palmas", "Pontevedra", "Salamanca", "S.C Tenerife", "Cantabria(Santander)", "Segovia", "Sevilla", "Soria", "Tarragona",
+            "Teruel", "Toledo", "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza", "Ceuta", "Melilla"};
+
+        String[] numeroProvincias = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "12", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34",
+            "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52"};
+
+        String[] minimoCodigo = {"01000", "02000", "03000", "04000", "05000", "06000", "07000", "08000", "09000", "10000", "11000", "12000", "13000", "14000", "15000", "16000", "17000", "18000", "19000", "20000", "21000", "22000", "23000", "24000", "25000", "26000", "27000", "28000", "29000", "30000", "31000", "32000", "33000", "34000", "35000", "36000", "37000", "38000", "39000", "40000", "41000", "42000", "43000", "44000", "45000", "46000", "47000", "48000", "49000", "50000", "51000", "52000"};
+        String[] maximoCodigo = {"01520", "02696", "03860", "04897", "05697", "06980", "07860", "08980", "09693", "10991", "11693", "12609", "13779", "14970", "15981", "16891", "17869", "18890", "19495", "20870", "21891", "22880", "23790", "24996", "25796", "26589", "27891", "28991", "29792", "30892", "31890", "32930", "33993", "34889", "35640", "36980", "37900", "38911", "39880", "40593", "41980", "42368", "43896", "44793", "45960", "46980", "47883", "48992", "49882", "50840", "51001", "52001"};
+
+        /*Obtengo los dos primeros números de la cadena para poder trabajar*/
+        String codigoPostalUsuario = jFCodigoPostal.getText();
+        String codigoPostalUsuarioProvincia = codigoPostalUsuario.substring(0, 2);
+
+        /*Convierto los datos a enteros para trabajar con ellos en el 2º if*/
+        int enteroCodigoPostalUsuario = Integer.parseInt(codigoPostalUsuario);
+        boolean provinciaEncontrada = false;
+
+        //01000 <= 01510 && 01510 <= 01520
+        /*Recorro el array numeroProvincia para comprobar si existe ese numero y cual es*/
+        for (int i = 0; i < numeroProvincias.length; i++) {
+            if (codigoPostalUsuarioProvincia.equals(numeroProvincias[i])) {
+                provinciaEncontrada = true;
+                /*Compruebo que el numero pasado esta entre el minimo y el máximo*/
+                int enteroMinimoCodigoTemporal = Integer.parseInt(minimoCodigo[i]);
+                int enteroMaximoCodigoTemporal = Integer.parseInt(maximoCodigo[i]);
+                System.out.println(enteroMinimoCodigoTemporal + " >= " + enteroCodigoPostalUsuario + " && "
+                        + enteroMaximoCodigoTemporal + " >= " + enteroCodigoPostalUsuario);
+
+                if (enteroMinimoCodigoTemporal <= enteroCodigoPostalUsuario && enteroMaximoCodigoTemporal >= enteroCodigoPostalUsuario) {
+                    jLMostrarProvincia.setText(nombreProvincia[i]);
+                    jLMostrarProvincia.setFont(negrita);
+                    jLMostrarProvincia.setForeground(Color.darkGray);    //Esto igual esta prohibido
+                    jLProvincia.setText("Provincia :");
+                    jLabel13.setIcon(new ImageIcon(getClass().getResource("/fechainterface/correcto.png")));
+                    jLabel13.setEnabled(true);
+                    System.out.println("codigo correcto");
+
+                } else {
+                    jLMostrarProvincia.setText("No existe");
+                    jLMostrarProvincia.setForeground(Color.red);    //Esto igual esta prohibido
+                         
+                    jLProvincia.setText("");
+                    jLabel13.setIcon(new ImageIcon(getClass().getResource("/fechainterface/error.png")));
+                    jLabel13.setEnabled(true);
+                    System.out.println("codigo no correcto");
+                    System.out.println("Provincia No existe");
+                }
+            }
+        }
+
+        /*Sino encuentra provincia en el for, es que no existe el indice de provincia*/
+        if (!provinciaEncontrada) {
+            jLMostrarProvincia.setText("No existe");
+            jLMostrarProvincia.setForeground(Color.red);    //Esto igual esta prohibido
+            jLProvincia.setText("");
+            jLabel13.setIcon(new ImageIcon(getClass().getResource("/fechainterface/error.png")));
+            jLabel13.setEnabled(true);
+            System.out.println("codigo no correcto");
+            System.out.println("Provincia No existe");
+        }
+    }//GEN-LAST:event_jBComprobarCodigoPostalActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -393,6 +532,9 @@ public class Fecha extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFDNI;
     private javax.swing.JFormattedTextField jFFecha;
     private javax.swing.JFormattedTextField jFIBAN;
+    private javax.swing.JLabel jLMostrarFechaCorrecta;
+    private javax.swing.JLabel jLMostrarProvincia;
+    private javax.swing.JLabel jLProvincia;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
